@@ -5,9 +5,6 @@ on:
     branches: [ master ]
   pull_request:
     branches: [ master ]
-    
-env:
-  SUPER_SECRET: ${{ secrets.SECRET_KEY_FLASKBLOG }}
   
 jobs:
   build:
@@ -25,4 +22,6 @@ jobs:
     - name: Test
       run:
         pytest test.py -vv $SUPER_SECRET
+      env:
+        SUPER_SECRET: ${{ secrets.SECRET_KEY_FLASKBLOG }}
         
