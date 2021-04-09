@@ -5,7 +5,10 @@ on:
     branches: [ master ]
   pull_request:
     branches: [ master ]
-
+    
+env:
+  SUPER_SECRET: ${{ secrets.SECRET_KEY_FLASKBLOG }}
+  
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -20,8 +23,6 @@ jobs:
         python -m pip install --upgrade pip
         pip install -r requirements.txt;
     - name: Test
-      env:
-        SUPER_SECRET: ${{ secrets.SECRET_KEY_FLASKBLOG }}
       run:
-        pytest test.py -vv "$env:SUPER_SECRET"
+        pytest test.py -vv 
         
