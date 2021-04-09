@@ -26,15 +26,15 @@ def test_about(route):
     res = client.get(route + '/about')
     assert res.status_code == 200
 
-def test_register(route):
-    client = app.test_client()
-    res = client.get(route + '/register')
-    assert res.status_code == 200
+# def test_register(route):
+#     client = app.test_client()
+#     res = client.get(route + '/register')
+#     assert res.status_code == 200
 
-def test_login(route):
-    client = app.test_client()
-    res = client.get(route + '/login')
-    assert res.status_code == 200
+# def test_login(route):
+#     client = app.test_client()
+#     res = client.get(route + '/login')
+#     assert res.status_code == 200
 
 def test_404(route):
     client = app.test_client()
