@@ -33,7 +33,7 @@ def test_register(route):
 
 def test_login(route):
     client = app.test_client()
-    res = client.post(route + '/login')
+    res = client.get(route + '/login')
     assert res.status_code == 200
 
 def test_404(route):
