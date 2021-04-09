@@ -13,6 +13,8 @@ jobs:
     - uses: actions/checkout@v2
     - name: Set up Python 3.9
       uses: actions/setup-python@v2
+      env: 
+        secretKey: ${{ secrets.SECRET_KEY_FLASKBLOG }}
       with:
         python-version: 3.9
     - name: Install
@@ -20,8 +22,6 @@ jobs:
         python -m pip install --upgrade pip
         pip install -r requirements.txt;
     - name: Test
-      env: 
-        secretKey: ${{ secrets.SECRET_KEY_FLASKBLOG }}
       run:
-        pytest test.py -vv "$env:secretKey"
+        pytest test.py -vv "$secretKey"
         
