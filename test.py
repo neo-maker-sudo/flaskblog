@@ -1,6 +1,5 @@
 import pytest
 import requests
-from flask import url_for
 from run import app
 import json
 
@@ -18,29 +17,26 @@ def route():
     return "http://127.0.0.1:5000"
 
 def test_home(route):
-    res = requests.get(route + '/')
+    client = app.test_client()
+    res = client.get(route + '/')
     assert res.status_code == 200
 
 def test_about(route):
-    res = requests.get(route + '/about')
+    client = app.test_client()
+    res = client.get(route + '/about')
     assert res.status_code == 200
 
 def test_register(route):
-    res = requests.get(route + '/register')
+    client = app.test_client()
+    res = client.get(route + '/register')
     assert res.status_code == 200
 
 def test_login(route):
-    url = route + '/login'
-    data = dict(email='eyywqkgb@gmail.com', password='eyywqkgb')
-    res = requests.post(url, data=data, allow_redirects=False)
-    assert res.status_code == 200
-
-def test_newpost(route):
-    url = route + '/post/new'
-    res = requests.get(url)
+    client = app.test_client()
+    res = client.post(route + '/login')
     assert res.status_code == 200
 
 def test_404(route):
-    url = route + '/fksajmfksa'
-    res = requests.get(url)
+    client = app.test_client()
+    res = client.get(route + '/fksajmfksa')
     assert res.status_code == 404
