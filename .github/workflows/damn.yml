@@ -21,7 +21,6 @@ jobs:
         pip install -r requirements.txt;
     - name: Test
       run:
-        pytest test.py -vv $SUPER_SECRET
-      env:
-        SUPER_SECRET: ${{ secrets.SECRET_KEY_FLASKBLOG }}
+        pytest test.py -vv
+
         
