@@ -4,6 +4,7 @@ import json
 
 @pytest.fixture
 def client():
+    app.config['SECRET_KEY'] = 'aa9e514eec7ba8c6bb6c3984247dee2ac8976975e7c04c5fee0bb5678cf260b6'
     app.config['TESTING'] = True
     app.config['WTF_CSRF_ENABLED'] = False
     client = app.test_client()
